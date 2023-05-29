@@ -1,0 +1,9 @@
+POST http://localhost:8080/register
+Content-Type: application/json
+
+{
+  "username": "nick12312312311",
+  "email": "grisha@y122222211eee1andex.ru",
+  "password": "123222211111",
+  "role": "chef"
+}
