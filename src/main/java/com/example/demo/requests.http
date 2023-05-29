@@ -1,0 +1,114 @@
+### Registration
+POST http://localhost:8080/register
+Content-Type: application/json
+
+{
+  "username": "example1",
+  "email": "example11@example1.ru",
+  "password": "pass",
+  "role": "manager"
+}
+
+
+### Login
+POST http://localhost:8080/login
+Content-Type: application/json
+
+{
+  "email": "example1@example1.ru",
+  "password": "pass"
+}
+
+### User
+GET http://localhost:8080/user
+Authorization: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJleGFtcGxlMUBleGFtcGxlMS5ydU1vbiBNYXkgMjkgMDM6MDY6MzYgTVNLIDIwMjMiLCJpYXQiOjE2ODUzMTg3OTYsImV4cCI6MTY4NTMyMjM5Nn0.QrR2LT8fHP6xRiuH2GAafYvtULV4sXaEfgQ8jq0KcQI
+
+### CreateNewOrder
+POST http://localhost:8080/order
+Content-Type: application/json
+
+{
+  "id": 1,
+  "order": [
+    {
+      "id": 1,
+      "quantity": 1
+    }
+  ],
+  "countDishes": 1,
+  "specialRequests": 1,
+  "status": "wait"
+}
+
+### GetOrder
+GET http://localhost:8080/order
+Content-Type: application/json
+
+{
+  "order_id": 1
+}
+
+### CreateNewDish
+POST http://localhost:8080/dish
+Accept: application/json
+Content-Type: application/json
+
+{
+  "user_id": 5,
+  "dish_id": null,
+  "name" : "222",
+  "description" : "descr222iption",
+  "price": 1123.00,
+  "quantity" : 10,
+  "is_available" : true,
+  "created_at" : null,
+  "updated_at" : null
+}
+
+### GetDish
+GET http://localhost:8080/dish
+Content-Type: application/json
+
+{
+  "user_id": 1,
+  "dish_id": 1
+}
+
+### UpdateDish
+PUT http://localhost:8080/dish
+Content-Type: application/json
+
+{
+  "user_id": 5,
+  "dish_id": 1,
+  "name" : "nam213123e",
+  "description" : "description",
+  "price": 1123.12,
+  "quantity" : 10,
+  "is_available" : true,
+  "created_at" : "",
+  "updated_at" : ""
+}
+
+### DeleteDish
+DELETE http://localhost:8080/dish
+Content-Type: application/json
+
+{
+  "user_id": 5,
+  "dish_id": 3,
+  "name" : "nam213123e",
+  "description" : "description",
+  "price": 1123.12,
+  "quantity" : 10,
+  "is_available" : true,
+  "created_at" : "",
+  "updated_at" : ""
+}
+
+### GetMenu
+GET http://localhost:8080/menu
+
+
+
+
