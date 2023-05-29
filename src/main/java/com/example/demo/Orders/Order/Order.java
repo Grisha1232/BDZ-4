@@ -9,7 +9,7 @@ import org.aspectj.weaver.ast.Or;
 import java.sql.Timestamp;
 
 @Entity
-@Table(name = "order")
+@Table(name = "order_table")
 public class Order {
     @Id
     @Column(name = "id")
@@ -88,5 +88,17 @@ public class Order {
 
     public void setSpecial_requests(String special_requests) {
         this.special_requests = special_requests;
+    }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "id=" + id +
+                ", user_id=" + user_id +
+                ", status='" + status + '\'' +
+                ", special_requests='" + special_requests + '\'' +
+                ", created_at=" + created_at +
+                ", updated_at=" + updated_at +
+                '}';
     }
 }

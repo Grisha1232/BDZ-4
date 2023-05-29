@@ -26,32 +26,17 @@ public class Order_dish {
     @Column(name = "price")
     private Double price;
 
-    @Column(name = "created_at")
-    private Timestamp created_at;
-
-    @Column(name = "update_at")
-    private Timestamp updated_at;
 
     public Order_dish() {
 
     }
 
-    public Order_dish(Integer id, Integer order_id, Integer dish_id, Integer quantity, Double price, Timestamp created_at, Timestamp updated_at) {
+    public Order_dish(Integer id, Integer order_id, Integer dish_id, Integer quantity, Double price) {
         this.id = id;
         this.dish_id = dish_id;
         this.order_id = order_id;
         this.quantity = quantity;
         this.price = price;
-        this.created_at = created_at;
-        this.updated_at = updated_at;
-    }
-
-    public Timestamp getCreated_at() {
-        return created_at;
-    }
-
-    public Timestamp getUpdated_at() {
-        return updated_at;
     }
 
     public Integer getQuantity() {
@@ -72,14 +57,6 @@ public class Order_dish {
 
     public Integer getOrder_id() {
         return order_id;
-    }
-
-    public void setUpdated_at(Timestamp updated_at) {
-        this.updated_at = updated_at;
-    }
-
-    public void setCreated_at(Timestamp created_at) {
-        this.created_at = created_at;
     }
 
     public void setQuantity(Integer quantity) {

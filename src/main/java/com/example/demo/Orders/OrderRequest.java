@@ -6,7 +6,7 @@ import java.util.List;
 
 public class OrderRequest {
     private Integer id;
-    private List<Dish> order;
+    private List<OrderRequestDish> order;
     private Integer countDishes;
     private String specialRequests;
     private String status;
@@ -15,7 +15,7 @@ public class OrderRequest {
         return id;
     }
 
-    public List<Dish> getOrder() {
+    public List<OrderRequestDish> getOrder() {
         return order;
     }
 
@@ -35,7 +35,7 @@ public class OrderRequest {
         this.id = id;
     }
 
-    public void setOrder(List<Dish> order) {
+    public void setOrder(List<OrderRequestDish> order) {
         this.order = order;
     }
 

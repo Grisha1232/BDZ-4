@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS dish (
                       updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE IF NOT EXISTS "order" (
+CREATE TABLE IF NOT EXISTS order_table (
                        id INT PRIMARY KEY,
                        user_id INT NOT NULL,
                        status VARCHAR(50) NOT NULL,
@@ -43,7 +43,7 @@ CREATE TABLE IF NOT EXISTS order_dish (
                             dish_id INT NOT NULL,
                             quantity INT NOT NULL,
                             price DECIMAL(10, 2) NOT NULL,
-                            FOREIGN KEY (order_id) REFERENCES "order"(id),
+                            FOREIGN KEY (order_id) REFERENCES order_table(id),
                             FOREIGN KEY (dish_id) REFERENCES dish(id)
 );
 

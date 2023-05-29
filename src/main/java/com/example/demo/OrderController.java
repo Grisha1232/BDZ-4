@@ -39,31 +39,37 @@ public class OrderController {
 
     @PostMapping("/order")
     public ResponseEntity<String> createOrder(@RequestBody OrderRequest request) {
+        System.out.println("get in 1");
         var order = request.getOrder();
+        System.out.println("get in 2");
 
         var dishes = dishService.readAll();
+        System.out.println("get in 3");
         var allOrders = orderService.readAll();
+        System.out.println("get in 4");
         for (var dish : order) {
-            if (!dishes.contains(dish)) {
+            var d = dishService.read(dish.getId());
+            if (d.getName().equals("")) {
                 return new ResponseEntity<>("Contains dishes not in menu", HttpStatus.BAD_REQUEST);
             }
             if (dishService.read(dish.getId()).getQuantity() == 0) {
-                return new ResponseEntity<>("Dish: " + dish.getName() + " dont have quantity", HttpStatus.BAD_REQUEST);
+                return new ResponseEntity<>("Dish: " + dishService.read(dish.getId()).getName() + " dont have quantity", HttpStatus.BAD_REQUEST);
             }
         }
+        System.out.println("get in 3");
         var date = new Date();
         Order order1 = new Order(allOrders.size() > 0 ? allOrders.get(allOrders.size() - 1).getId() + 1 : 1,
                 request.getId(), request.getStatus(), request.getSpecialRequests(),
                 new Timestamp(date.getTime()), new Timestamp(date.getTime()));
         orderService.create(order1);
-
+        System.out.println("get in 4");
         int order_dish_id = 1;
         var dummy = order_dishService.readAll();
         if (dummy.size() > 0) {
             order_dish_id = dummy.get(dummy.size() - 1).getId() + 1;
         }
         for (var dish : order) {
-            order_dishService.create(new Order_dish(order_dish_id, order1.getId(), dish.getId(), request.getCountDishes(), dish.getPrice(), new Timestamp(date.getTime()), new Timestamp(date.getTime())));
+            order_dishService.create(new Order_dish(order_dish_id, order1.getId(), dish.getId(), request.getCountDishes(), dishService.read(dish.getId()).getPrice()));
         }
         if (!started) {
             Thread t1 = new Thread(new orderManagement());
@@ -164,6 +170,11 @@ public class OrderController {
         var dish = dishService.read(request.getDish_id());
         var date = new Date();
         dish.setUpdated_at(new Timestamp(date.getTime()));
+        dish.setName(request.getName());
+        dish.setDescription(request.getDescription());
+        dish.setPrice(request.getPrice());
+        dish.setQuantity(request.getQuantity());
+        dish.setIs_available(request.getIs_available());
         var flag = dishService.update(dish, request.getDish_id());
         if (flag) {
             return new ResponseEntity<>("Success", HttpStatus.OK);
