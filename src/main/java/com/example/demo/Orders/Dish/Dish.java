@@ -6,7 +6,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 import java.sql.Timestamp;
-import java.text.DecimalFormat;
 
 @Entity
 @Table(name = "dish")
@@ -22,7 +21,7 @@ public class Dish {
     private String description;
 
     @Column(name = "price")
-    private DecimalFormat price;
+    private Double price;
 
     @Column(name = "quantity")
     private Integer quantity;
@@ -40,7 +39,7 @@ public class Dish {
 
     }
 
-    public Dish(Integer id, String name, String description, DecimalFormat price, Integer quantity, Boolean is_available, Timestamp created_at, Timestamp updated_at) {
+    public Dish(Integer id, String name, String description, Double price, Integer quantity, Boolean is_available, Timestamp created_at, Timestamp updated_at) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -71,7 +70,7 @@ public class Dish {
         return is_available;
     }
 
-    public DecimalFormat getPrice() {
+    public Double getPrice() {
         return price;
     }
 
@@ -107,11 +106,25 @@ public class Dish {
         this.name = name;
     }
 
-    public void setPrice(DecimalFormat price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 
     public void setQuantity(Integer quantity) {
         this.quantity = quantity;
+    }
+
+    @Override
+    public String toString() {
+        return "Dish{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", price=" + price +
+                ", quantity=" + quantity +
+                ", is_available=" + is_available +
+                ", created_at=" + created_at +
+                ", updated_at=" + updated_at +
+                '}';
     }
 }

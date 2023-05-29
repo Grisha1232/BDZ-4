@@ -8,13 +8,13 @@ public class NewDishCreate {
     private Integer dish_id;
     private String name;
     private String description;
-    private DecimalFormat price;
+    private Double price;
     private Integer quantity;
     private Boolean is_available;
     private Timestamp created_at = null;
     private Timestamp updated_at = null;
 
-    public DecimalFormat getPrice() {
+    public Double getPrice() {
         return price;
     }
 
@@ -70,7 +70,7 @@ public class NewDishCreate {
         this.updated_at = updated_at;
     }
 
-    public void setPrice(DecimalFormat price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 
@@ -90,7 +90,7 @@ public class NewDishCreate {
 
     }
 
-    public NewDishCreate(Integer user_id, Integer dish_id, String name, String description, DecimalFormat price, Integer quantity, Boolean is_available, Timestamp created_at, Timestamp updated_at) {
+    public NewDishCreate(Integer user_id, Integer dish_id, String name, String description, Double price, Integer quantity, Boolean is_available, Timestamp created_at, Timestamp updated_at) {
         this.user_id = user_id;
         this.dish_id = dish_id;
         this.name = name;

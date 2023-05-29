@@ -6,7 +6,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 import java.sql.Timestamp;
-import java.text.DecimalFormat;
 
 @Entity
 @Table(name = "order_dish")
@@ -25,7 +24,7 @@ public class Order_dish {
     private Integer quantity;
 
     @Column(name = "price")
-    private DecimalFormat price;
+    private Double price;
 
     @Column(name = "created_at")
     private Timestamp created_at;
@@ -37,7 +36,7 @@ public class Order_dish {
 
     }
 
-    public Order_dish(Integer id, Integer order_id, Integer dish_id, Integer quantity, DecimalFormat price, Timestamp created_at, Timestamp updated_at) {
+    public Order_dish(Integer id, Integer order_id, Integer dish_id, Integer quantity, Double price, Timestamp created_at, Timestamp updated_at) {
         this.id = id;
         this.dish_id = dish_id;
         this.order_id = order_id;
@@ -59,7 +58,7 @@ public class Order_dish {
         return quantity;
     }
 
-    public DecimalFormat getPrice() {
+    public Double getPrice() {
         return price;
     }
 
@@ -87,7 +86,7 @@ public class Order_dish {
         this.quantity = quantity;
     }
 
-    public void setPrice(DecimalFormat price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 
